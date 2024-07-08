@@ -12,12 +12,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2 
+      - name: check env
+        run: echo ${{ secrets.HOST }}
       - name: Connect to server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          password: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
           script: |
             cd app
