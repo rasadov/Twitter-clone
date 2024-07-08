@@ -8,7 +8,7 @@ class UserOutSchema(BaseModel):
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class PostSchema(BaseModel):
     primary_key: Optional[int] = None
