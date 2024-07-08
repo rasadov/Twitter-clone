@@ -12,5 +12,5 @@ app.include_router(auth.router)
 @app.get("/", tags=["Root"])
 def read_root():
     return {
-        "message" : "home page!"
+        "message" : "hello worlddddd!"
         }

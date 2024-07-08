@@ -1,5 +1,4 @@
 name: Build and deploy
-
 on:
   push:
     branches:
@@ -13,5 +12,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2 
-      - name: hello world
-        run: echo "Hello World"
+      - name: Connect to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd app
+            git pull
+            pip install -r requirements.txt
+            sudo systemctl restart app
