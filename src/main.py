@@ -3,8 +3,6 @@ from .routes import users, posts, auth
  
 app = FastAPI()
 
-print("main.py")
-
 app.include_router(users.router)
 app.include_router(posts.router)
 app.include_router(auth.router)
